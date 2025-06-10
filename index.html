@@ -1,0 +1,147 @@
+<!--
+Directory Structure:
+
+craftbox-website/
+  ├─ index.html
+  ├─ style.css
+  └─ script.js
+-->
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Kids Craft Box</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>Creative Kids Craft Box</h1>
+    <p>Personalized Craft Kits for Kids of All Ages</p>
+  </header>
+
+  <section id="shop">
+    <h2>Shop</h2>
+    <form id="order-form">
+      <label for="box-type">Select Box:</label>
+      <select id="box-type" required>
+        <option value="4 Projects - $40">4 Projects – $40</option>
+        <option value="6 Projects – $60">6 Projects – $60</option>
+      </select>
+
+      <label for="child-count">Number of Children:</label>
+      <input type="number" id="child-count" min="1" value="1" required />
+
+      <label for="ages">Children&#8217;s Ages (comma-separated):</label>
+      <input type="text" id="ages" placeholder="e.g., 4, 7" required />
+
+      <button type="submit">Order Now</button>
+    </form>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Choose your box and tell us how many children and their ages.</li>
+      <li>We curate age-appropriate, theme-based craft projects.</li>
+      <li>Everything you need is included—just open and create!</li>
+    </ol>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At Creative Kids Craft Box, we believe in fostering creativity and confidence in children through hands-on projects.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:hello@creativekidscraftbox.co.nz">hello@creativekidscraftbox.co.nz</a></p>
+    <p>Phone: 0800-CRAFT-BOX (0800-272-384)</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Creative Kids Craft Box</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background: #ffd54f;
+  padding: 0.5rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  margin: 0 1rem;
+}
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+header {
+  text-align: center;
+  padding: 2rem;
+  background: #ffecb3;
+}
+section {
+  padding: 2rem;
+}
+#shop form {
+  display: grid;
+  gap: 1rem;
+  max-width: 400px;
+  margin: auto;
+}
+#shop button {
+  padding: 0.75rem;
+  background: #ffb300;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ffe082;
+}
+
+// script.js
+const form = document.getElementById('order-form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const box = document.getElementById('box-type').value;
+  const count = document.getElementById('child-count').value;
+  const ages = document.getElementById('ages').value;
+  const subject = encodeURIComponent('Order for Craft Box');
+  const body = encodeURIComponent(
+    `I would like to order:\n- Box: ${box}\n- Number of children: ${count}\n- Children\'s ages: ${ages}`
+  );
+  window.location.href = `mailto:hello@creativekidscraftbox.co.nz?subject=${subject}&body=${body}`;
+});
